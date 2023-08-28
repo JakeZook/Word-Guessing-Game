@@ -8,6 +8,11 @@ var words = ["absurd", "cobweb", "youthful", "stronghold", "vaporize",
 "grogginess", "megahertz", "thumbscrew", "gnarly", "embezzle"];
 
 var chosenWord = [];
+var wordProgress = [];
+
+var lettersGuessed = 0;
+var lettersNeeded;
+var timerInterval;
 
 timer.setAttribute("Style", "color: green;");
 
@@ -20,20 +25,25 @@ function startGame()
 function pickWord()
 {
     wordDisplay.textContent = "";
+    wordProgress = [];
+    lettersGuessed = 0;
+
     var choice = Math.floor(Math.random() * words.length);
     chosenWord = words[choice].split('');
     console.log(chosenWord);
+    lettersNeeded = chosenWord.length;
     
     for (var i = 0; i < chosenWord.length; i++)
     {
-        wordDisplay.textContent += " - ";
+        wordProgress[i] = " - ";
+        wordDisplay.textContent += wordProgress[i];
     }
 }
 
 function startTimer()
 {
     var secondsLeft = 60;
-    var timerInterval = setInterval(function() {
+    timerInterval = setInterval(function() {
 
     secondsLeft--;
     countdown.textContent = secondsLeft;
@@ -61,7 +71,23 @@ function checkGuess(guess)
 {
     if (chosenWord.includes(guess))
     {
-        console.log("Correct");
+        wordDisplay.textContent = "";
+
+        for (var i = 0; i < chosenWord.length; i++)
+        {
+            if (chosenWord[i] === guess)
+            {
+                wordProgress[i] = " " + guess + " ";
+                lettersGuessed++;
+                console.log(lettersGuessed);
+            }
+            wordDisplay.textContent += wordProgress[i];
+        }
+
+        if (lettersGuessed === lettersNeeded)
+        {
+            clearInterval(timerInterval);
+        }
     }
     
     else

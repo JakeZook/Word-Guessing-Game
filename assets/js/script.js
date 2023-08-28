@@ -57,4 +57,29 @@ function startTimer()
     }, 1000);
 }
 
+function checkGuess(guess)
+{
+    if (chosenWord.includes(guess))
+    {
+        console.log("Correct");
+    }
+    
+    else
+    {
+        console.log("False");
+    }
+}
+
+function keydownEvent(event)
+{
+    var letters = "abcdefghijklmnopqrstuvwxyz".split('');
+    var key = event.key.toLowerCase();
+
+    if (letters.includes(key))
+    {
+        checkGuess(key);
+    }
+}
+
 playButton.addEventListener("click", startGame);
+document.addEventListener("keydown", keydownEvent);

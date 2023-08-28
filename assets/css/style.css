@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+    background-color: gray;
+}
+
+body{
+    display: block;
+    text-align: center;
+}
+
+header{
+    margin: 2rem;
+}
+
+h1{
+    padding-bottom: 1rem;
+    color: darkgreen;
+}
+
+p{
+    padding-bottom: 1rem;
+    color: white;
+}
+
+header h3{
+    font-size: 2rem;
+}
+
+h2{
+    color: gold;
+    font-size: 2rem;
+    padding-bottom: 1rem;
+}
+
+button{
+    margin: 1rem;
+    font-size: 2rem;
+    color: white;
+    background-color: darkgreen;
+}
